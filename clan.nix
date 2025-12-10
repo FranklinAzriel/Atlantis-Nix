@@ -14,6 +14,9 @@
 			oracle-cloud = {	
 				tags = [ "virtual" "cloud" "personal" "singapore" ];
 			};
+            dartnodes = {	
+				tags = [ "virtual" "cloud" "personal" "united-states" ];
+			};
   		};
 
   		# Docs: See https://docs.clan.lol/services/definition/
