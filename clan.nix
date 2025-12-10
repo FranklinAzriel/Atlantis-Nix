@@ -45,7 +45,7 @@
 				};
 			};
 
-			roles.default.extraModules = [ ./home-manager ];
+			roles.default.extraModules = [ ./home-manager/default.nix ];
 
 			# Docs: https://docs.clan.lol/services/official/zerotier/
 			# The lines below will define a zerotier network and add all machines as 'peer' to it.
@@ -72,4 +72,14 @@
 		#   environment.systemPackages = [ pkgs.asciinema ];
 		# };
   	};
+
+    templates = {
+        disko = { 
+            name = {
+                description = "My custom partitioning scheme with GPT, LUKS and BTRFS subvolumes";
+                path = templates/disk/gpt-luks-btrfs-subvolumes;
+            };
+        };
+    };
+
 }
