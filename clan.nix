@@ -22,14 +22,27 @@
 			# Admin service for managing machines
 			# This service adds a root password and SSH access.
 			admin = {
-	  			roles.default.tags.all = { };
-	  			roles.default.settings.allowedKeys = {
-					# Insert the public key that you want to use for SSH access.
-					# All keys will have ssh access to all machines ("tags.all" means 'all machines').
-					# Alternatively set 'users.users.root.openssh.authorizedKeys.keys' in each machine
-					"Trusted Key" = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILl50pmugL84aI4kD038ls1NKgyDAv5oERwESf3SAYZT";
-					"Trusted Backup Key" = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMuViZcCcDLwNC1rJ26l8eBUV6DitM/O8B+akDN/Q9y8";
+	  			roles.default = {
+					tags.all = { };
+	  				settings.allowedKeys = {
+						# Insert the public key that you want to use for SSH access.
+						# All keys will have ssh access to all machines ("tags.all" means 'all machines').
+						# Alternatively set 'users.users.root.openssh.authorizedKeys.keys' in each machine
+						"Trusted Key" = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILl50pmugL84aI4kD038ls1NKgyDAv5oERwESf3SAYZT";
+						"Trusted Backup Key" = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMuViZcCcDLwNC1rJ26l8eBUV6DitM/O8B+akDN/Q9y8";
+					};
 	  			};
+			};
+
+			FranklinAzriel-user = {
+				module.name = "users";
+				roles.default = {
+					tags.all = { };
+					settings = {
+						user = "FranklinAzriel";
+						groups = [ "wheel" ];
+					};
+				};
 			};
 
 			# Docs: https://docs.clan.lol/services/official/zerotier/
