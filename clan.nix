@@ -1,7 +1,10 @@
 {
-  	# Ensure this is unique among all clans you want to use.
-  	meta.name = "__CHANGE_ME__";
-  	meta.domain = "changeme";
+  	# Set metadata for clan
+  	meta = {
+		name = "Atlantis-Nix";
+  		domain = "ocean";
+		description = "Personal NixOS machines for Atlantis";
+	};
 
   	inventory.machines = {
 		# Define machines here.
