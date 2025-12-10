@@ -45,6 +45,8 @@
 				};
 			};
 
+			roles.default.extraModules = [ ./home-manager ];
+
 			# Docs: https://docs.clan.lol/services/official/zerotier/
 			# The lines below will define a zerotier network and add all machines as 'peer' to it.
 			# !!! Manual steps required:
