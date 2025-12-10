@@ -23,7 +23,7 @@
 			# This service adds a root password and SSH access.
 			admin = {
 	  			roles.default = {
-					tags.all = { };
+					tags = [ "personal" ];
 	  				settings.allowedKeys = {
 						# Insert the public key that you want to use for SSH access.
 						# All keys will have ssh access to all machines ("tags.all" means 'all machines').
@@ -37,7 +37,7 @@
 			FranklinAzriel-user = {
 				module.name = "users";
 				roles.default = {
-					tags.all = { };
+					tags = [ "personal" ];
 					settings = {
 						user = "FranklinAzriel";
 						groups = [ "wheel" ];
@@ -56,10 +56,10 @@
 	  			# Replace with the name (string) of your machine that you will use as zerotier-controller
 	  			# See: https://docs.zerotier.com/controller/
 	  			# Deploy this machine first to create the network secrets
-	  			roles.controller.machines."__YOUR_CONTROLLER__" = { };
+	  			roles.controller.machines."oracle-cloud" = { };
 	  			# Peers of the network
 	  			# tags.all means 'all machines' will joined
-	  			roles.peer.tags.all = { };
+	  			roles.peer.tags = [ "personal" ];
 			};
   		};
 	};
