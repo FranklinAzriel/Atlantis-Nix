@@ -14,7 +14,7 @@
 			oracle-cloud = {	
 				tags = [ "virtual" "cloud" "personal" "singapore" ];
 			};
-            dartnodes = {	
+            dartnode = {	
 				tags = [ "virtual" "cloud" "personal" "united-states" ];
 			};
   		};
