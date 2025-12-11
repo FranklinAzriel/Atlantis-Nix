@@ -1,77 +1,73 @@
 {
 	boot.loader.grub = {
-	  	enable = true;
+		enable = true;
 		efiSupport = true;
-  		efiInstallAsRemovable = true;
+		efiInstallAsRemovable = true;
 	};
-  	
+		
 	disko.devices = {
 		disk = {
-	  		main = {
+			main = {
 				name = "main-{{uuid}}";
 				type = "disk";
 				device = "{{mainDisk}}";
 				content = {
-		  			type = "gpt";
-		  			partitions = {
+					type = "gpt";
+					partitions = {
 						ESP = {
-			  				size = "512M";
-			  				type = "EF00";
-			  				content = {
+							size = "512M";
+							type = "EF00";
+							content = {
 								type = "filesystem";
 								format = "vfat";
 								mountpoint = "/boot";
 								mountOptions = [ "umask=0077" ];
-			  				};
+							};
 						};
 						luks = {
-			  				size = "100%";
-			  				content = {
+							size = "100%";
+							content = {
 								type = "luks";
 								name = "crypted";
 								# disable settings.keyFile if you want to use interactive password entry
 								#passwordFile = "/tmp/secret.key"; # Interactive
 								settings = {
-				  					allowDiscards = true;
-				  					keyFile = "/tmp/secret.key";
+									allowDiscards = true;
+									keyFile = "/tmp/secret.key";
 								};
 								additionalKeyFiles = [ "/tmp/additionalSecret.key" ];
 								content = {
-				  					type = "btrfs";
-				  					extraArgs = [ "-f" ];
-				  					subvolumes = {
+									type = "btrfs";
+									extraArgs = [ "-f" ];
+									subvolumes = {
 										"/root" = {
-						  					mountpoint = "/";
-						  					mountOptions = [
+											mountpoint = "/";
+											mountOptions = [
 												"compress=zstd"
 												"noatime"
-									  		];
+											];
 										};
 										"/home" = {
-						  					mountpoint = "/home";
-						  					mountOptions = [
+											mountpoint = "/home";
+											mountOptions = [
 												"compress=zstd"
 												"noatime"
-					  						];
+											];
 										};
 										"/nix" = {
-							  				mountpoint = "/nix";
-					  						mountOptions = [
+											mountpoint = "/nix";
+											mountOptions = [
 												"compress=zstd"
 												"noatime"
-					  						];
+											];
 										};
-										"/swap" = {
-							  				mountpoint = "/.swapvol";
-					  						swap.swapfile.size = "20M";
-										};
-				  					};
+									};
 								};
-			  				};
+							};
 						};
-		  			};
+					};
 				};
-	  		};
+			};
 		};
-  	};
+	};
 }
