@@ -3,6 +3,7 @@
 		enable = true;
 		efiSupport = true;
 		efiInstallAsRemovable = true;
+        device = "{{mainDisk}}";
 	};
 		
 	disko.devices = {
@@ -14,6 +15,11 @@
 				content = {
 					type = "gpt";
 					partitions = {
+                        boot = {
+                            size = "1M";
+                            type = "EF02";
+                            attributes = [ 0 ]; # partition attribute
+                        };
 						ESP = {
 							size = "512M";
 							type = "EF00";
@@ -35,7 +41,7 @@
 									allowDiscards = true;
 									keyFile = "/tmp/secret.key";
 								};
-								additionalKeyFiles = [ "/tmp/additionalSecret.key" ];
+								#additionalKeyFiles = [ "/tmp/additionalSecret.key" ];
 								content = {
 									type = "btrfs";
 									extraArgs = [ "-f" ];
@@ -56,7 +62,7 @@
 												"strictatime"
 											];
 										};
-										"@home" = {
+										"@nix" = {
 											mountpoint = "/nix";
 											mountOptions = [
 												"compress=zstd:3"
