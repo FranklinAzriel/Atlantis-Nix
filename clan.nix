@@ -14,6 +14,12 @@
 			dartnode = {	
 				tags = [ "virtual" "cloud" "personal" "united-states" ];
 			};
+			oracle-cloud-1 = {
+				tags = [ "virtual" "cloud" "personal" "singapore" ];
+			};
+			oracle-cloud-2 = {
+				tags = [ "virtual" "cloud" "personal" "singapore" ];
+			};
 		};
 
 		# Docs: See https://docs.clan.lol/services/definition/
@@ -45,7 +51,7 @@
 				};
 			};
 
-			roles.default.extraModules = [ ./home-manager/default.nix ];
+			#roles.default.extraModules = [ ./home-manager/default.nix ];
 
 			# Docs: https://docs.clan.lol/services/official/zerotier/
 			# The lines below will define a zerotier network and add all machines as 'peer' to it.
@@ -56,7 +62,7 @@
 					# Replace with the name (string) of your machine that you will use as zerotier-controller
 					# See: https://docs.zerotier.com/controller/
 					# Deploy this machine first to create the network secrets
-					roles.controller.machines."oracle-cloud" = { };
+					roles.controller.machines."oracle-cloud-1" = { };
 					# Peers of the network
 					# tags.all means 'all machines' will joined
 					roles.peer.tags = [ "personal" ];
