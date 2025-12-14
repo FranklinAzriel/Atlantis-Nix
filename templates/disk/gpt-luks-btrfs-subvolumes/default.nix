@@ -3,7 +3,7 @@
 		enable = true;
 		efiSupport = true;
 		efiInstallAsRemovable = true;
-        device = "{{mainDisk}}";
+		device = "{{mainDisk}}";
 	};
 		
 	disko.devices = {
@@ -15,11 +15,11 @@
 				content = {
 					type = "gpt";
 					partitions = {
-                        boot = {
-                            size = "1M";
-                            type = "EF02";
-                            attributes = [ 0 ]; # partition attribute
-                        };
+						boot = {
+							size = "1M";
+							type = "EF02";
+							attributes = [ 0 ]; # partition attribute
+						};
 						ESP = {
 							size = "512M";
 							type = "EF00";
@@ -49,7 +49,7 @@
 										"@" = {
 											mountpoint = "/";
 											mountOptions = [
-												"compress=zstd:3"
+												"compress=zstd:1"
 												"lazytime"
 												"strictatime"
 											];
@@ -57,7 +57,7 @@
 										"@home" = {
 											mountpoint = "/home";
 											mountOptions = [
-												"compress=zstd"
+												"compress=zstd:1"
 												"lazytime"
 												"strictatime"
 											];
@@ -65,7 +65,7 @@
 										"@nix" = {
 											mountpoint = "/nix";
 											mountOptions = [
-												"compress=zstd:3"
+												"compress=zstd:1"
 												"lazytime"
 												"strictatime"
 											];
