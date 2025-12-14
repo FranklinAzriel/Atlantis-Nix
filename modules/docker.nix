@@ -1,0 +1,12 @@
+{ pkgs, ... }: {
+	virtualisation.docker = {
+		enable = true;
+		storageDriver = "btrfs";
+	};
+
+	environment.systemPackages = with pkgs; [
+		docker-compose 
+	];
+
+	users.users.FranklinAzriel.extraGroups = [ "docker" ];
+}
