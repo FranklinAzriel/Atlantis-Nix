@@ -11,9 +11,6 @@
 			# Define machines here.
 			# Tags schema:
 			# [Form] [Location] [Owner] [Country] etc
-			dartnode = {	
-				tags = [ "virtual" "cloud" "personal" "united-states" ];
-			};
 			oracle-cloud-1 = {
 				tags = [ "virtual" "cloud" "personal" "singapore" ];
 			};
