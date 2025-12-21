@@ -1,0 +1,19 @@
+{ pkgs, ... }: {   
+	fonts = {
+		enableDefaultPackages = true;
+        fontDir.enable = true;
+		packages = with pkgs; [
+			noto-fonts
+			noto-fonts-cjk-sans
+			noto-fonts-color-emoji
+	    ];
+        fontconfig = {
+            defaultFonts = {
+                sansSerif = [ "Noto Sans" ];
+                serif = [ "Noto Serif" ];
+                monospace = [ "Noto Sans Mono" ];
+                emoji = [ "Noto Color Emoji" ];
+            };
+        };
+    };
+}
