@@ -39,7 +39,7 @@
 					inputs.clan-core.flakeModules.default
 				];
 
-				# https://docs.clan.lol/guides/flake-parts
+				# https://docs.clan.lol/guides/flake-parts  
 				clan = {
 					imports = [ ./clan.nix ];
 				};
