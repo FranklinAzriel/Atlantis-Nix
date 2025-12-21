@@ -1,10 +1,10 @@
 {
   "machines": {
-    "oracle-cloud-1": {
+    "oracle-cloud-x86": {
       "installedAt": 1765718066
     },
-    "oracle-cloud-2": {
-      "installedAt": 1765719967
+    "homelab": {
+      "installedAt": 1766140482
     }
   }
 }

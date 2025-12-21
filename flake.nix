@@ -9,48 +9,53 @@
 
 		flake-parts = {
 			url = "github:hercules-ci/flake-parts";
-  			inputs.nixpkgs-lib.follows = "nixpkgs";
+			inputs.nixpkgs-lib.follows = "nixpkgs";
 		};
 		
 		home-manager = {
 			url = "github:nix-community/home-manager";
-    		inputs.nixpkgs.follows = "nixpkgs";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
+		lanzaboote = {
+			url = "github:nix-community/lanzaboote/v1.0.0";
+			inputs.nixpkgs.follows = "nixpkgs";
 		};
 	};
 
 	outputs =
-    	inputs@{
-      	flake-parts,
-      	...
-    	}:
-    	flake-parts.lib.mkFlake { inherit inputs; } {
-      	systems = [
-        	"x86_64-linux"
-        	"aarch64-linux"
-        	"x86_64-darwin"
-        	"aarch64-darwin"
-      	];
-      	imports = [
-        	inputs.clan-core.flakeModules.default
-      	];
+			inputs@{
+				flake-parts,
+				...
+			}:
+			flake-parts.lib.mkFlake { inherit inputs; } {
+				systems = [
+					"x86_64-linux"
+					"aarch64-linux"
+					"x86_64-darwin"
+					"aarch64-darwin"
+				];
+				imports = [
+					inputs.clan-core.flakeModules.default
+				];
 
-      	# https://docs.clan.lol/guides/flake-parts
-      	clan = {
-        	imports = [ ./clan.nix ];
-      	};
+				# https://docs.clan.lol/guides/flake-parts
+				clan = {
+					imports = [ ./clan.nix ];
+				};
 
-      	perSystem =
-        	{ pkgs, inputs', ... }:
-        	{
+				perSystem =
+					{ pkgs, inputs', ... }:
+					{
           	devShells.default = pkgs.mkShell { packages = [ inputs'.clan-core.packages.clan-cli ]; };
 
-          	# Customize nixpkgs
-          	# _module.args.pkgs = import inputs.nixpkgs {
-          	#   inherit system;
-          	#   config.allowUnfree = true;
-          	#   overlays = [ ];
-          	# };
-          	# clan.pkgs = pkgs;
-        	};
-    	};
+						# Customize nixpkgs
+						# _module.args.pkgs = import inputs.nixpkgs {
+						#   inherit system;
+						#   config.allowUnfree = true;
+						#   overlays = [ ];
+						# };
+						# clan.pkgs = pkgs;
+					};
+			};
 }
