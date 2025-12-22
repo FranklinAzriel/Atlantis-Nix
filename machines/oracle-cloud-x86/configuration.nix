@@ -1,9 +1,7 @@
 {
 	imports = [
 		../../modules
-#    ../../modules/k3s-server.nix
-
-    #../../modules/systemd-boot.nix
+    ../../modules/virtualization/k3s-server.nix
 	];
 
 	# New machine!
