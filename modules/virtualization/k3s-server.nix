@@ -16,7 +16,7 @@
 		extraFlags = toString [
 			"--disable=traefik" # disable the default traefik ingress controller
 			"--kubelet-arg=feature-gates=NodeSwap=true" # Enable NodeSwap feature gate
-			"--datastore-endpoint=postgres://k3s:zLFKnaQudiekqPev375YqNnwsVZtg6ms@localhost:5432/kubernetes" # Use external Postgres database
+			"--datastore-endpoint=postgres://k3s:PLACEHOLDER@PLACEHOLDER:5432/kubernetes" # Use external Postgres database
 			"--disable=metrics-server"
 			"--tls-san"
 			"10.147.17.20"
