@@ -20,6 +20,9 @@
 			oracle-cloud-x86 = {
 				tags = [ "virtual" "cloud" "personal" "singapore" ];
 			};
+			dartnode = {
+				tags = [ "virtual" "cloud" "personal" "united-state-central" ];
+			};
 		};
 
 		# Docs: See https://docs.clan.lol/services/definition/
