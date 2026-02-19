@@ -3,13 +3,16 @@
 		./hardware-configuration.nix
 		../../modules
 		./bootloader.nix
+    ./kernel.nix
 
 		./desktop
 		./games
 		./packages
+    ./flatpak.nix
 		./pipewire.nix
 		./sysrq.nix
-    ./waydroid.nix
+
+    ../../modules/virtualization/libvirt.nix
 	];
 
 	time.timeZone = "Asia/Jakarta";
@@ -22,4 +25,5 @@
 			#device = "/var/lib/swapfile";
 			#size = 4*1024;
 	#} ];
+
 }
