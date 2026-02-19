@@ -3,5 +3,6 @@
 		./cursor.nix
 		./fonts.nix
 		./kde-plasma.nix
+    ./sunshine.nix
 	];
 }
