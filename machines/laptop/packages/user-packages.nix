@@ -1,5 +1,10 @@
 { pkgs, ... }: {
-
+# Temporary for ffmpeg-full, see https://github.com/NixOS/nixpkgs/issues/483540
+nixpkgs.overlays = [
+	(final: prev: {
+		ffmpeg-full = prev.ffmpeg-full.override { withShaderc = false; };
+	})
+];
 	environment.systemPackages = with pkgs; [
 		# Shell
 		fzf
@@ -14,6 +19,8 @@
 				"--enable-features=AcceleratedVideoEncoder,VaapiOnNvidiaGPUs,VaapiIgnoreDriverChecks,Vulkan,DefaultANGLEVulkan,VulkanFromANGLE"
 			];
 		})
+
+		firefox
 
 		# Development
 		git
@@ -32,12 +39,14 @@
 		vscode
 
 		# Multimedia
-		ffmpeg
+		ffmpeg-full
 		vlc
 		obs-studio
 		
 		# Tools
 		qdiskinfo
+		unrar
+		rar
 
 		# Idendity Management
 		bitwarden-desktop
@@ -53,14 +62,24 @@
 
 		# Games
 		(prismlauncher.override {
-    		# Add binary required by some mod
-    		additionalPrograms = [ ffmpeg ];
+			# Add binary required by some mod
+			additionalPrograms = [ ffmpeg-full vlc ];
 
-    		# Change Java runtimes available to Prism Launcher
-    		jdks = [ "" ];
-  		})
-      
-    javaPackages.compiler.temurin-bin.jre-8
+			# Change Java runtimes available to Prism Launcher
+			jdks = [ "" ];
+		})
+			
+		javaPackages.compiler.temurin-bin.jre-21
+		javaPackages.compiler.temurin-bin.jre-8
 
+		virt-manager
+
+		(lutris.override {
+			#extraLibraries = [];
+				extraPkgs = pkgs: [
+					pkgs.bibata-cursors
+					pkgs.gamescope
+				];		
+		})
 	];
 }
